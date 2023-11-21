@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 
-const API = import.meta.env.VITE_API_URL;
+const API = 'https://polyheroll-back-end.onrender.com';
 
 function DiceSetDetails() {
   const [diceSet, setDiceSet] = useState({
@@ -47,7 +47,7 @@ function DiceSetDetails() {
       <p>Complete Set: {diceSet.complete_set ? 'Yes' : 'No'}</p>
       <p>Character Level: {diceSet.character_level}</p>
       <p>D20: {diceSet.d20}</p>
-      <p>Dice Color Theme: {diceSet.dice_color_theme}</p>
+      <p>Dice Color Theme: <span style={{ color: diceSet.dice_color_theme }}>{diceSet.dice_color_theme}</span></p>
       <div className="showNavigation">
         <div>
           <Link to={`/dicesets/${id}/edit`}>

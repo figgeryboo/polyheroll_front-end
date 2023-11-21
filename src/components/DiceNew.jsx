@@ -2,11 +2,11 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import '../global.css';
 
-const API = import.meta.env.VITE_API_URL;
+const API = 'https://polyheroll-back-end.onrender.com';
 
 function DiceSetNewForm() {
   const navigate = useNavigate();
-  const [diceSet, setDiceSet] = useState({
+  const [diceSet, setDiceState] = useState({
     character_name: "",
     campaign: "",
     complete_set: false,
@@ -17,11 +17,15 @@ function DiceSetNewForm() {
   });
 
   const handleTextChange = (event) => {
-    setDiceSet({ ...diceSet, [event.target.id]: event.target.value });
+    setDiceState({ ...diceSet, [event.target.id]: event.target.value });
   };
 
   const handleCheckboxChange = (event) => {
-    setDiceSet({ ...diceSet, [event.target.id]: event.target.checked });
+    setDiceState({ ...diceSet, [event.target.id]: event.target.checked });
+  };
+
+  const handleLevelChange = (event) => {
+    setDiceState({ ...diceSet, character_level: parseInt(event.target.value) });
   };
 
   const handleSubmit = (event) => {
@@ -29,7 +33,8 @@ function DiceSetNewForm() {
     addDiceSet();
   };
 
-  const addDiceSet = () => {
+   const addDiceSet = async () => {
+
     const diceSetData = {
       character_name: diceSet.character_name,
       campaign: diceSet.campaign,
@@ -44,12 +49,13 @@ function DiceSetNewForm() {
       fetch(`${API}/dicesets`, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json; charset=utf-8",
         },
         body: JSON.stringify(diceSetData),
       })
         .then((res) => res.json())
         .then(() => navigate("/dicesets"));
+
     } catch (error) {
       return error;
     }
@@ -99,7 +105,7 @@ function DiceSetNewForm() {
           id="character_level"
           value={diceSet.character_level}
           type="number"
-          onChange={handleTextChange}
+          onChange={handleLevelChange}
           placeholder="Character Level"
           required
         />
@@ -121,6 +127,7 @@ function DiceSetNewForm() {
           type="text"
           onChange={handleTextChange}
           placeholder="Dice Color Theme"
+          style={{ color: diceSet.dice_color_theme }}
           required
         />
 
@@ -135,7 +142,7 @@ function DiceSetNewForm() {
         </Link>
       </div>
     </div>
-  );
+  ); 
 }
 
 export default DiceSetNewForm;

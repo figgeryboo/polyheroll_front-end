@@ -17,7 +17,7 @@ function DiceSet({ diceSet }) {
       <td>{diceSet.complete_set ? "Yes" : "No"}</td>
       <td>{diceSet.character_level}</td>
       <td>{diceSet.d20}</td>
-      <td>{diceSet.dice_color_theme}</td>
+      <td style={{ color: diceSet.dice_color_theme }}>{diceSet.dice_color_theme} </td>
     </tr>
   );
 }

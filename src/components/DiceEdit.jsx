@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import '../global.css';
 
-const API = import.meta.env.VITE_API_URL;
+const API = 'https://polyheroll-back-end.onrender.com';
 
 function DiceSetEditForm() {
   let { id } = useParams();
@@ -120,6 +120,7 @@ function DiceSetEditForm() {
           onChange={handleTextChange}
           placeholder="Dice Color Theme"
           required
+          style={{ color: diceSet.dice_color_theme }}
         />
 
         <br />
