@@ -46,7 +46,7 @@ function DiceSetDetails() {
       <p>Campaign: {diceSet.campaign}</p>
       <p>Complete Set: {diceSet.complete_set ? 'Yes' : 'No'}</p>
       <p>Character Level: {diceSet.character_level}</p>
-      <p>D20: {diceSet.d20}</p>
+     <p>D20: <img src={`./src/assets/d20.png`} alt={`D20`} width="20" height="20" /></p>
       <p>Dice Color Theme: <span style={{ color: diceSet.dice_color_theme }}>{diceSet.dice_color_theme}</span></p>
       <div className="showNavigation">
         <div>
