@@ -56,8 +56,8 @@ function DiceSetNewForm() {
 				},
 				body: JSON.stringify(diceSetData),
 			})  
-				alert('Dice Set submitted successfully!')
 				.then((res) => res.json())
+				alert('Dice Set submitted successfully!')
 				.then(() => 
 				navigate('/dicesets'));
 		} catch (error) {
