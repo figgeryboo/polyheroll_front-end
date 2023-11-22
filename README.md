@@ -15,7 +15,7 @@ I created this app to because I play a lot of Dungeons and Dragons in my free ti
 2. Run `npm i` to install the dependencies needed.
 3. On main level run `npm run dev` for a localhost port.
 
-[LIVE DEPLOY for this project can be found linked here.]()
+[LIVE DEPLOY for this project can be found linked here.](https://polyheroll.netlify.app/)
 
 
 #### Additional:
@@ -27,5 +27,5 @@ I created this app to because I play a lot of Dungeons and Dragons in my free ti
 ***
 <br/>
 
-README.md last updated Nov 21
+README.md last updated Nov 22
 
