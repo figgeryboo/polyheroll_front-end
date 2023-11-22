@@ -14,8 +14,8 @@ function DiceSetDetails() {
 		dice_color_theme: '',
 	});
 
-  const [jailReasons, setJailReasons] = useState([]);
-  const [newReason, setNewReason] = useState('');
+	const [jailReasons, setJailReasons] = useState([]);
+	const [newReason, setNewReason] = useState('');
 
 	let navigate = useNavigate();
 	let { id } = useParams();
@@ -33,11 +33,13 @@ function DiceSetDetails() {
 		fetchDiceSet();
 	}, [id]);
 
-  useEffect(() => {
-    const storedJailReasons = localStorage.getItem(`diceJail_${id}`);
-    const parsedJailReasons = storedJailReasons ? JSON.parse(storedJailReasons) : [];
-    setJailReasons(parsedJailReasons);
-  }, [id]);
+	useEffect(() => {
+		const storedJailReasons = localStorage.getItem(`diceJail_${id}`);
+		const parsedJailReasons = storedJailReasons
+			? JSON.parse(storedJailReasons)
+			: [];
+		setJailReasons(parsedJailReasons);
+	}, [id]);
 
 	const handleDelete = async () => {
 		try {
@@ -50,17 +52,18 @@ function DiceSetDetails() {
 		}
 	};
 
-  const handleAddReason = () => {
-    const updatedReasons = [...jailReasons, newReason];
-    setJailReasons(updatedReasons);
-    localStorage.setItem(`diceJail_${id}`, JSON.stringify(updatedReasons));
-    setNewReason('');
-  };
-  
+	const handleAddReason = () => {
+		const updatedReasons = [...jailReasons, newReason];
+		setJailReasons(updatedReasons);
+		localStorage.setItem(`diceJail_${id}`, JSON.stringify(updatedReasons));
+		setNewReason('');
+	};
 
 	return (
 		<div className="diceset-details">
-			<span style={{ color: diceSet.dice_color_theme }}><h1>{diceSet.character_name}</h1></span>
+			<span style={{ color: diceSet.dice_color_theme }}>
+				<h1>{diceSet.character_name}</h1>
+			</span>
 			<p>Campaign: {diceSet.campaign}</p>
 			<p>Complete Set: {diceSet.complete_set ? 'Yes' : 'No'}</p>
 			<p>Character Level: {diceSet.character_level}</p>
@@ -90,7 +93,7 @@ function DiceSetDetails() {
 					</p>
 				</div>
 			)}
-      	<div className="showNavigation">
+			<div className="showNavigation">
 				<div>
 					<Link to={`/dicesets/${id}/edit`}>
 						<button>Edit</button>
@@ -103,14 +106,14 @@ function DiceSetDetails() {
 					</Link>
 				</div>
 			</div>
-			<div className='diceJail'> 
+			<div className="diceJail">
 				<h2>DICE JAIL</h2>
 				<ul>
 					{jailReasons.map((reason, index) => (
 						<li key={index}>⛓️{reason}⛓️</li>
 					))}
 				</ul>
-        <hr/>
+				<hr />
 				<label htmlFor="reason">Reason for Jail:</label>
 				<input
 					type="text"
@@ -118,12 +121,11 @@ function DiceSetDetails() {
 					value={newReason}
 					onChange={(event) => setNewReason(event.target.value)}
 				/>
-        <br/>
+				<br />
 				<button onClick={handleAddReason}>Add to Jail</button>
 			</div>
 		</div>
 	);
 }
-
 
 export default DiceSetDetails;

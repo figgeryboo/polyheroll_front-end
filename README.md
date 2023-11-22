@@ -1,4 +1,4 @@
-# Polyheroll (Back-End)
+# Polyheroll (Front-End)
 
 ####  Module 4 Final Project - Bethany A. Torres 2023
 
