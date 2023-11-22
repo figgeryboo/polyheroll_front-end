@@ -29,7 +29,7 @@ function DiceSetNewForm() {
 	};
 
 	const handleNumberChange = (event) => {
-		setDiceSet({ ...diceSet, d20: parseInt(event.target.value) });
+		setDiceState({ ...diceSet, d20: parseInt(event.target.value) });
 	};
 
 	const handleSubmit = (event) => {
