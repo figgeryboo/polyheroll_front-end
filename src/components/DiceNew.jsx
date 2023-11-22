@@ -28,6 +28,10 @@ function DiceSetNewForm() {
 		setDiceState({ ...diceSet, character_level: parseInt(event.target.value) });
 	};
 
+	const handleNumberChange = (event) => {
+		setDiceSet({ ...diceSet, d20: parseInt(event.target.value) });
+	};
+
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		addDiceSet();
@@ -114,7 +118,7 @@ function DiceSetNewForm() {
 					id="d20"
 					value={diceSet.d20}
 					type="number"
-					onChange={handleTextChange}
+					onChange={handleNumberChange}
 					placeholder="Number of D20"
 					required
 				/>
