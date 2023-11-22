@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import DiceSet from './DiceSet';
-
 const API = 'https://polyheroll-back-end.onrender.com';
 
 function DiceSets() {
 	const [diceSets, setDiceSets] = useState([]);
+	const [displayedSets, setDisplayedSets] = useState(2);
 
 	const fetchData = async () => {
 		try {
@@ -23,17 +23,22 @@ function DiceSets() {
 		fetchData();
 	}, []);
 
+	const loadMore = () => {
+		setDisplayedSets(displayedSets + 2);
+	};
+
 	return (
 		<div className="DiceSets">
 			<section>
 				<div className="dicesets-container">
-					{diceSets.map((diceSet) => (
+					{diceSets.slice(0, displayedSets).map((diceSet) => (
 						<div key={diceSet.id} className="diceset-card">
-							<h1>{diceSet.character_name}</h1>
+							<span style={{ color: diceSet.dice_color_theme }}>
+								<h1>{diceSet.character_name}</h1>
+							</span>
 							<p>Campaign: {diceSet.campaign}</p>
 							<p>Complete Set: {diceSet.complete_set ? 'Yes' : 'No'}</p>
 							<p>Character Level: {diceSet.character_level}</p>
-							<p>D20: {diceSet.d20}</p>
 							<p>
 								Dice Color Theme:{' '}
 								<span style={{ color: diceSet.dice_color_theme }}>
@@ -43,13 +48,14 @@ function DiceSets() {
 							{diceSet.d20 > 0 && (
 								<div>
 									<p>
-										D20's:
+										Number of D20's:
 										{[...Array(diceSet.d20)].map((_, index) => (
 											<img
 												key={index}
-												src={`./src/assets/d20.png`}
+												src={`/assets/d20.png`}
 												alt={`D20s: ${diceSet.d20}`}
 												style={{
+													marginInlineStart: '5px',
 													width: '20px',
 													height: '20px',
 													backgroundColor: diceSet.dice_color_theme,
@@ -67,6 +73,9 @@ function DiceSets() {
 					))}
 				</div>
 			</section>
+			{displayedSets < diceSets.length && (
+				<button onClick={loadMore}>Load More</button>
+			)}
 		</div>
 	);
 }

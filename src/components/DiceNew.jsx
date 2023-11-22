@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import '../global.css';
 
-const API = 'https://polyheroll-back-end.onrender.com';
+const API = 'https://polyheroll-back-end.onrender.com'
 
 function DiceSetNewForm() {
 	const navigate = useNavigate();
@@ -51,7 +51,8 @@ function DiceSetNewForm() {
 					'Content-Type': 'application/json; charset=utf-8',
 				},
 				body: JSON.stringify(diceSetData),
-			})
+			})  
+        console.log(API)
 				.then((res) => res.json())
 				.then(() => navigate('/dicesets'));
 		} catch (error) {
@@ -117,14 +118,6 @@ function DiceSetNewForm() {
 					placeholder="Number of D20"
 					required
 				/>
-
-				{diceSet.d20 > 0 && (
-					<img
-						src={`./src/assets/d20.png`}
-						alt={`D20s: ${diceSet.d20}`}
-						style={{ width: '15px', height: '15px' }}
-					/>
-				)}
 
 				<label htmlFor="dice_color_theme">Dice Color Theme:</label>
 				<input

@@ -26,6 +26,14 @@ function DiceSetEditForm() {
     setDiceSet({ ...diceSet, [event.target.id]: event.target.checked });
   };
 
+  const handleLevelChange = (event) => {
+		setDiceSet({ ...diceSet, character_level: parseInt(event.target.value) });
+	};
+
+  const handleNumberChange = (event) => {
+		setDiceSet({ ...diceSet, d20: parseInt(event.target.value) });
+	};
+
   const updateDiceSet = () => {
     fetch(`${API}/dicesets/${id}`, {
       method: 'PUT',
@@ -97,7 +105,7 @@ function DiceSetEditForm() {
           id="character_level"
           value={diceSet.character_level}
           type="number"
-          onChange={handleTextChange}
+          onChange={handleLevelChange}
           placeholder="Character Level"
           required
         />
@@ -107,7 +115,7 @@ function DiceSetEditForm() {
           id="d20"
           value={diceSet.d20}
           type="number"
-          onChange={handleTextChange}
+          onChange={handleNumberChange}
           placeholder="Number of D20"
           required
         />
