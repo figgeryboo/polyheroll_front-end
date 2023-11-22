@@ -56,9 +56,10 @@ function DiceSetNewForm() {
 				},
 				body: JSON.stringify(diceSetData),
 			})  
-        console.log(API)
+				alert('Dice Set submitted successfully!')
 				.then((res) => res.json())
-				.then(() => navigate('/dicesets'));
+				.then(() => 
+				navigate('/dicesets'));
 		} catch (error) {
 			return error;
 		}
