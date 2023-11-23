@@ -24,6 +24,8 @@ I created this app to because I play a lot of Dungeons and Dragons in my free ti
 
 [LIVE JSON API DEPLOY for this project can be found linked here.](https://polyheroll-back-end.onrender.com/dicesets)
 
+[VIDEO RECORDING of my project presentation.](https://veed.io/view/29382ae9-05fd-4bff-9163-fd5c3ab65a92)
+
 ***
 <br/>
 
